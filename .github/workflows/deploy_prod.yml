@@ -11,17 +11,10 @@ on:
   push:
     branches: master
 
-permissions:
-  contents: read
-
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
-    permissions:
-      security-events: write
-
 
     steps:
       - uses: actions/checkout@v3
@@ -45,7 +38,9 @@ jobs:
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           arguments: build
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
+      - name: SonarCloud Static Code Analysis
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       - name: Deploy with SAM
         run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-file samconfig-prod.toml
