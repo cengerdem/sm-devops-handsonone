@@ -19,7 +19,8 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    permissions: read-all
+    permissions:
+      security-events: write
 
 
     steps:
