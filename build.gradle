@@ -46,7 +46,6 @@ sonar {
         property("sonar.projectKey", "sm-devops-handsonone")
         property("sonar.organization", "cengerdem")
         property("sonar.host.url", "https://sonarcloud.io")
-        property 'sonar.login', project.findProperty("SONAR_TOKEN") ?: System.getenv("SONAR_TOKEN")
     }
 }
 
