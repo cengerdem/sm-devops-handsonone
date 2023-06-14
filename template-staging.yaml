@@ -42,4 +42,4 @@ Resources:
 Outputs:
   MicronautApiEndpoint:
     Description: "API Gateway endpoint URL for Staging stage for Micronaut sample function"
-    Value: !Sub "https://${MyApi}.execute-api.${AWS::Region}.amazonaws.com/stg/"
+    Value: !Sub "https://${MyApi}.execute-api.${AWS::Region}.amazonaws.com/staging/"
