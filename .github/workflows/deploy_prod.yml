@@ -27,13 +27,9 @@ jobs:
       - uses: actions/checkout@v3
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v2
-      - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v2
-        with:
-          queries: codeql/detect_password.ql
-          language: java
+    #  - name: Autobuild
+      #  uses: github/codeql-action/autobuild@v2
+
       - name: Set up JDK 11
         uses: actions/setup-java@v3
         with:
@@ -52,5 +48,10 @@ jobs:
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           arguments: build
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+        with:
+          queries: codeql/detect_password.ql
+          language: java
       - name: Deploy with SAM
         run:  sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-file samconfig-prod.toml
