@@ -10,8 +10,8 @@ name: Java CI with Gradle to AWS - Staging
 on:
   push:
     branches: release
-  pull_request:
-    branches: release
+#  pull_request:
+#    branches: release
 
 permissions:
   contents: read
