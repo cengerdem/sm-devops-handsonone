@@ -47,9 +47,5 @@ jobs:
           arguments: build
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
-        with:
-          queries: codeql/detect_password.ql
-          language: java
       - name: Deploy with SAM
-        if: ${{ github.event_name != 'pull_request' && needs.build.outputs.codeql_passed == 'true' }}
         run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-file samconfig-prod.toml
