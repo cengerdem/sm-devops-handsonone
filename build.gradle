@@ -1,7 +1,6 @@
 plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
     id("io.micronaut.application") version "3.7.7"
-    id("org.sonarqube") version "4.0.0.2929"
 }
 
 version = "0.1"
@@ -38,14 +37,6 @@ micronaut {
     processing {
         incremental(true)
         annotations("tr.edu.metu.sm703.*")
-    }
-}
-
-sonar {
-    properties {
-        property("sonar.projectKey", "sm-devops-handsonone")
-        property("sonar.organization", "cengerdem")
-        property("sonar.host.url", "https://sonarcloud.io")
     }
 }
 
