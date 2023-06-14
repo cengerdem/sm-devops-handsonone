@@ -10,6 +10,8 @@ name: Java CI with Gradle to AWS - Production
 on:
   push:
     branches: release
+  pull_request:
+    branches: release
 
 permissions:
   contents: read
@@ -40,4 +42,4 @@ jobs:
         with:
           arguments: build
       - name: Deploy with SAM
-        run:  sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-file samconfig-staging.toml
+        run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-file samconfig-staging.toml
