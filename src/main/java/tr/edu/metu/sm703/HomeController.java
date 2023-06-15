@@ -9,7 +9,7 @@ public class HomeController {
 
     @Get
     public Map<String, Object> index() {
-        String password = "sm703";
+        String password = "sm703"; //TODO
         return Collections.singletonMap("message", "Hello World new " + password);
     }
 }
