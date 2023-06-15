@@ -11,9 +11,7 @@ public class HomeController {
 
     @Get
     public Map<String, Object> index() {
-
-
-        String course = "sm703";
-        return Collections.singletonMap("message", "Hello World new " + course);
+        String password = "sm703";
+        return Collections.singletonMap("message", "Hello World new " + password);
     }
 }
