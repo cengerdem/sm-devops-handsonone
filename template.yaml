@@ -28,7 +28,7 @@ Resources:
       Tracing: Active
       Environment:
         Variables:
-          AWS_LAMBDA_EXECUTION_LOGS: /aws/lambda/MyFunction
+          AWS_LAMBDA_EXECUTION_LOGS: /aws/lambda/${HelloWorldFunctionProd}
       Events:
         GetHelloWorld:
           Type: Api
