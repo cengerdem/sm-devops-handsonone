@@ -13,7 +13,7 @@ public class HomeController {
 
     @Get
     public Map<String, Object> index(@QueryValue String val) {
-        // TODO
+
         return Collections.singletonMap("message", "Hello World new " + val);
     }
 }
