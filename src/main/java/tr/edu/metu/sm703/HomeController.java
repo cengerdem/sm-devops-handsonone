@@ -11,8 +11,7 @@ public class HomeController {
 
     @Get
     public Map<String, Object> index() {
-  //      String inputString = "s3cr37";
-    //    byte[] key         = inputString.getBytes();
+
 
         String course = "sm703";
         return Collections.singletonMap("message", "Hello World new " + course);
