@@ -10,6 +10,8 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HomeControllerTest {
@@ -35,9 +37,9 @@ public class HomeControllerTest {
     void testHandler() throws JsonProcessingException {
         AwsProxyRequest request = new AwsProxyRequest();
         request.setHttpMethod("GET");
-        request.setPath("/");
+        request.setPath("");
         AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
         assertEquals(200, response.getStatusCode());
-        assertEquals("{\"message\":\"Hello World new sm703\"}",  response.getBody());
+        assertEquals("{\"message\":\"Hello World new \"}",  response.getBody());
     }
 }

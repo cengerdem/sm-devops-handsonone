@@ -25,6 +25,10 @@ Resources:
     Properties:
       Handler: io.micronaut.function.aws.proxy.MicronautLambdaHandler
       Policies:
+      Tracing: Active
+      Environment:
+        Variables:
+          AWS_LAMBDA_EXECUTION_LOGS: /aws/lambda/MyFunction
       Events:
         GetHelloWorld:
           Type: Api

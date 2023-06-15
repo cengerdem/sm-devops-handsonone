@@ -5,15 +5,15 @@ import io.micronaut.http.annotation.QueryValue;
 
 import java.util.Collections;
 import java.util.Map;
-
+import java.util.Optional;
 
 
 @Controller
 public class HomeController {
 
     @Get
-    public Map<String, Object> index(@QueryValue String val) {
+    public Map<String, Object> index(@QueryValue Optional<String> val) {
 
-        return Collections.singletonMap("message", "Hello World new " + val);
+        return Collections.singletonMap("message", "Hello World new " + val.orElse(""));
     }
 }
