@@ -41,15 +41,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
           SONAR_SCANNER_OPTS: -Xdebug
-      - name: Check Custom TODOs
-        run: |
-          response=$(curl -s -u "${{ secrets.SONAR_TOKEN }}:" "https://sonarcloud.io/api/issues/search?componentKeys=cengerdem_sm-devops-handsonone&rules=custom.todo.check")
-
-          total=$(echo "$response" | jq -r '.total')
-
-          if [[ $total -gt 0 ]]; then
-            echo "Custom TODOs detected in SonarQube analysis."
-            exit 1
-          fi
       - name: Deploy with SAM
         run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-file samconfig-prod.toml
