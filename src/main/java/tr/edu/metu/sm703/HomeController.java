@@ -16,7 +16,7 @@ public class HomeController {
 
     @Get
     public Map<String, Object> index(@QueryValue Optional<String> val) {
-        if(val.equals("error")){
+        if(val.equals(Optional.of("error"))){
             logger.error("error occured");
             return null;
         }
