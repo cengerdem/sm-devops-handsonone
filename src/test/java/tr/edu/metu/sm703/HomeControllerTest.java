@@ -10,8 +10,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HomeControllerTest {
@@ -40,6 +38,6 @@ public class HomeControllerTest {
         request.setPath("");
         AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
         assertEquals(200, response.getStatusCode());
-        assertEquals("{\"message\":\"Hello World new \"}",  response.getBody());
+        assertEquals("{\"message\":\"Hello World \"}",  response.getBody());
     }
 }

@@ -48,20 +48,5 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL:
 
-      - name: Create CloudWatch Alarm
-        run: |
-          aws cloudwatch put-metric-alarm \
-            --alarm-name MyLambdaAlarm \
-            --alarm-description "Alarm for Lambda function" \
-            --namespace AWS/Lambda \
-            --metric-name Invocations \
-            --dimensions "Name=FunctionName,Value=sam-app-prod-HelloWorldFunctionProd-ZjAMfv8zM0UF" \
-            --comparison-operator GreaterThanOrEqualToThreshold \
-            --evaluation-periods 1 \
-            --period 30 \
-            --threshold 2 \
-            --alarm-actions arn:aws:sns:eu-west-1:123456789012:MySNSTopic
-
-
       - name: Deploy with SAM
         run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-file samconfig-prod.toml
