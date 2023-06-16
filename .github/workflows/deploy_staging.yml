@@ -19,21 +19,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    permissions:
-      actions: read
-      checks: read
-      contents: read
-      deployments: read
-      id-token: read
-      issues: read
-      discussions: read
-      packages: read
-      pages: read
-      pull-requests: read
-      repository-projects: read
-      security-events: write
-      statuses: read
-
     steps:
       - uses: actions/checkout@v3
       - name: Initialize CodeQL
@@ -60,5 +45,19 @@ jobs:
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           arguments: build
+
+      - name: Official SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v1.2.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_SCANNER_OPTS: -Xdebug
+
+      - name: SonarQube Quality Gate Check
+        uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
       - name: Deploy with SAM
         run: sam deploy -t template-staging.yaml --no-confirm-changeset --no-fail-on-empty-changeset --config-file samconfig-staging.toml

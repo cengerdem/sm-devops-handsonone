@@ -35,6 +35,7 @@ jobs:
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         with:
           arguments: build
+
       - name: Official SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@v1.2.0
         env:
@@ -46,7 +47,7 @@ jobs:
         uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL:
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
       - name: Deploy with SAM
         run: sam deploy --no-confirm-changeset --no-fail-on-empty-changeset --config-file samconfig-prod.toml
