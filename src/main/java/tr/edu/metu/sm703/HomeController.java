@@ -17,7 +17,7 @@ public class HomeController {
     @Get
     public Map<String, Object> index(@QueryValue Optional<String> val) {
         if(val.equals(Optional.of("error"))){
-            logger.error("error occured");
+            logger.error("error occurred");
             return null;
         }
         return Collections.singletonMap("message", "Hello World " + val.orElse(""));
