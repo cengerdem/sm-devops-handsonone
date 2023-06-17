@@ -1,4 +1,5 @@
 package tr.edu.metu.sm703;
+
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.QueryValue;
@@ -9,6 +10,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 
 @Controller
@@ -17,7 +19,7 @@ public class HomeController {
 
     @Get
     public Map<String, Object> index(@QueryValue Optional<String> val) {
-        if(val.equals(Optional.of("error"))){
+        if (val.equals(Optional.of("error"))) {
             logger.error("error occurred");
             return null;
         }
@@ -25,7 +27,7 @@ public class HomeController {
 
         HashMap<String, Object> response = new HashMap<String, Object>();
         response.put("message", "Hello World " + val.orElse(""));
-        response.put("requestDate", System.currentTimeMillis());
+        response.put("requestDate", TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
 
 
         return response;
