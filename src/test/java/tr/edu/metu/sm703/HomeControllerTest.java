@@ -39,7 +39,7 @@ public class HomeControllerTest {
         request.setPath("");
         AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
         assertEquals(200, response.getStatusCode());
-        Assertions.assertTrue(response.getBody().contains("\"message\":\"Hello World \""));
+        Assertions.assertTrue(response.getBody().contains("\"message\":\"Hello World qa \""));
         Assertions.assertTrue(response.getBody().contains("\"requestDate\":"));
 
     }
