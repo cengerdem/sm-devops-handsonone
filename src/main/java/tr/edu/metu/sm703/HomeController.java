@@ -20,6 +20,8 @@ public class HomeController {
             logger.error("error occurred");
             return null;
         }
+        logger.info("bug fixed in hotfix branch");
+
         return Collections.singletonMap("message", "Hello World " + val.orElse(""));
     }
 }
