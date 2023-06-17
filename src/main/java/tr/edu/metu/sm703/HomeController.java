@@ -25,7 +25,7 @@ public class HomeController {
         }
         logger.info("bug fixed in hotfix branch");
 
-        HashMap<String, Object> response = new HashMap<String, Object>();
+        HashMap<String, Object> response = new HashMap();
         response.put("message", "Hello World " + val.orElse(""));
         response.put("requestDate", TimeUnit.MILLISECONDS.toSeconds(System.currentTimeMillis()));
 
