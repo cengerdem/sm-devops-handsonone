@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
@@ -22,6 +23,11 @@ public class HomeController {
         }
         logger.info("bug fixed in hotfix branch");
 
-        return Collections.singletonMap("message", "Hello World " + val.orElse(""));
+        HashMap<String, Object> response = new HashMap<String, Object>();
+        response.put("message", "Hello World " + val.orElse(""));
+        response.put("requestDate", System.currentTimeMillis());
+
+
+        return response;
     }
 }

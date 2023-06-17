@@ -7,6 +7,7 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.micronaut.function.aws.proxy.MicronautLambdaHandler;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -38,6 +39,8 @@ public class HomeControllerTest {
         request.setPath("");
         AwsProxyResponse response = handler.handleRequest(request, lambdaContext);
         assertEquals(200, response.getStatusCode());
-        assertEquals("{\"message\":\"Hello World \"}",  response.getBody());
+        Assertions.assertTrue(response.getBody().contains("\"message\":\"Hello World \""));
+        Assertions.assertTrue(response.getBody().contains("\"requestDate\":"));
+
     }
 }
